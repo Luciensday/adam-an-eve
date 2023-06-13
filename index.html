@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width", initial-scale="1.0">
+    <title>AAE TESTING</title>
+    <link rel="stylesheet" href="styles.css">
+   
+</head>
+<body>
+    <h1>Testing</h1>
+    <h2> It's <span id="playersturn"></span> 's turn!</h2>
+
+    <p> 1. choose direction for your rival! The direction will only change once you completed the steps! </p>
+
+    <div>
+        <button id="left" class="direction-btns">Left</button>
+        <button id="right" class="direction-btns">Right</button>
+        <button id="up" class="direction-btns">Up</button> 
+        <button id="down" class="direction-btns">Down</button>
+    </div>
+
+    <p> 2. Now, roll the dice and try to get the bite of good fruit! </p>
+
+     <div class="dice-container">
+        <div class="dice">
+       
+        </div>
+    </div>
+    </div>
+    <button type="button" class="btn-roll-dice">Roll Dice</button>
+
+
+    
+        <div>
+            <input type="text" id="steps" placeholder="Enter a number (1-12)">
+        </div>
+        <div id="canvasandscore">
+
+        <canvas id="canvas" ></canvas>
+        <div id="player1div">
+            <p><span id="player1name"></span>1's Score</p>
+            <p id="player1score"></p>
+        </div>
+        <div id="player2div">
+            <p><span id="player2name"></span> 2's Score</p>
+            <p id="player2score"></p>
+        </div>
+
+       </div>
+    
+   
+
+
+
+    <script src="app.js"></script>
+    </body>
+</html>

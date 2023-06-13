@@ -1,0 +1,84 @@
+body {
+    font-family:'courier New',courier, monospace ; 
+    text-align: center; 
+
+}
+
+.dice-container { 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+
+
+}
+.dice { 
+    width: 80px; 
+    height: 80px; 
+    position: relative; 
+    margin: 5px; 
+    border-radius: 10px; 
+    box-shadow: 0 0 10px rgba(0,0,0,25); 
+    
+
+}
+
+.dice-dot {
+    --top: 0%; 
+    --left: 0%; 
+
+    width: 15px; 
+    height: 15px; 
+    background-color: black; 
+    border-radius: 50%; 
+
+    /* /Dot positioning  */
+    position: absolute; 
+    top: var(--top); 
+    left: var(--left); 
+    transform: translateX(calc(var(--left) * -1)) translateY(calc(var(--top) * -1 ))
+}
+
+.btn-roll-dice {
+    margin-top: 10px; 
+}
+
+#canvas {
+    border: 1px solid black;
+    grid-column: 2 / 5;
+    grid-row: 1 / span 2
+     ;
+
+}
+#player1div{
+    border: 1px solid black;
+    grid-column: 5 / 6;
+    grid-row: 1 /2;
+
+}
+#player2div {
+    border: 1px solid black;
+    grid-column: 5 / 6;
+    grid-row: 2 /3;
+
+}
+
+#player1score {font-size: 5rem;}
+
+#player2score {font-size: 5rem;}
+
+#canvasandscore{
+    display: grid;
+    gap: 3px;
+  
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+
+
+
+  
+  
+  
+  
+  
