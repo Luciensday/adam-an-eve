@@ -1,58 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width", initial-scale="1.0">
-    <title>AAE TESTING</title>
+    <title>Eat Them All</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+<link href="https://fonts.googleapis.com/css2?family=Bruno+Ace&display=swap" rel="stylesheet">
    
 </head>
 <body>
-    <h1>Testing</h1>
-    <h2> It's <span id="playersturn"></span> 's turn!</h2>
-
-    <p> 1. choose direction for your rival! The direction will only change once you completed the steps! </p>
-
-    <div>
-        <button id="left" class="direction-btns">Left</button>
-        <button id="right" class="direction-btns">Right</button>
-        <button id="up" class="direction-btns">Up</button> 
-        <button id="down" class="direction-btns">Down</button>
-    </div>
-
-    <p> 2. Now, roll the dice and try to get the bite of good fruit! </p>
-
-     <div class="dice-container">
-        <div class="dice">
-       
-        </div>
-    </div>
-    </div>
-    <button type="button" class="btn-roll-dice">Roll Dice</button>
-
-
     
-        <div>
-            <input type="text" id="steps" placeholder="Enter a number (1-12)">
-        </div>
-        <div id="canvasandscore">
-
-        <canvas id="canvas" ></canvas>
-        <div id="player1div">
-            <p><span id="player1name"></span>1's Score</p>
-            <p id="player1score"></p>
-        </div>
-        <div id="player2div">
-            <p><span id="player2name"></span> 2's Score</p>
-            <p id="player2score"></p>
-        </div>
-
-       </div>
     
+    
+  
+    <div id='background-container'> 
+    <div id="game-container">
+        <div id="canvas-score-container"> 
+             
+                <div id="player1score-container">
+                    <p class="playersname-in-score-font"><span id="player1name"></span></p>
+                    <p class="score-font" id="player1score">0</p>
+                </div>
+                <div id="player2score-container">
+                    <p class="playersname-in-score-font"><span id="player2name"></span></p>
+                    <p class="score-font" id="player2score">0</p>
+                </div>
+          
+            
+            <canvas id="canvas"></canvas>
+        </div>
+
+        <div id="playersturn-container">
+             <h2 id="playersturn-sentence"> It's <span id="playersturn"></span> 's turn!</h2>
+        </div>
+        <div id="control-container">
+            
+                <p class="instruction-text first-instruction" >Choose direction</p>
+
+                <div id="direction-btns-container">
+                    <button id="left" class="direction-btns">Left</button>
+                    <button id="right" class="direction-btns">Right</button>
+                    <button id="up" class="direction-btns">Up</button> 
+                    <button id="down" class="direction-btns">Down</button>
+                </div>
+
+            
+                <p class="instruction-text second-instruction"> Now, roll the dice  </p>
+            <div id="roll-dice-control-container">
+                
+                
+                <div class="dice-container">
+                   <div class="dice">
+                   </div>
+                  
+            </div> 
+            <p id="step-sentence"> <span id="steps"></span></p>
+               <button type="button" class="btn-roll-dice">Roll Dice</button>
+               
+                
+               
+               
+            </div>
+            
+        </div>
+
+</div>
+<div id="overlay">
+    <div id="dialog-box">
+        <h2>EAT THEM ALL</h2>
+        <p class="prompt-intro"> Welcome to "eat them all"!<br><br>  The game will end once all the fruits are eaten and nothing left on tha table!<br><br> You and your rival will take turn: choose your direction to go and roll the die to eat the fruits. <br><br>  Whoever has highest score once all the table is clear win!</p>
+
+        <p>Enter Player Names</p>
+        <div id="input-player-container">
+        <input type="text" id="player1-input" placeholder="Player 1 Name">
+        <input type="text" id="player2-input" placeholder="Player 2 Name">
+        <button id="play-button">Play</button>
+        </div>
+    </div>
+</div>
+
+
+<div id="end-dialog-overlay">
+    <div id="end-dialog-box">
+      <h2>Game Over!</h2>
+      <p id="winner-score"></p>
+      <button id="play-again-button">Play Again</button>
+    </div>
+  </div>
+
+        
    
 
 
-
     <script src="app.js"></script>
+</div>
     </body>
 </html>
