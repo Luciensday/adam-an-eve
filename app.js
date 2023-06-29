@@ -1,333 +1,625 @@
+
+
 class Fruit {
-    constructor(x, y, color) {
-      this.x = x;
-      this.y = y;
-      this.color = color;
-    }
-  
-    draw(ctx) {
-      ctx.fillStyle = this.color;
-      ctx.fillRect(this.x, this.y, blocksize, blocksize);
-    }
+  constructor(x, y, color) {
+    this.x = x;
+    this.y = y;
+    this.color = color;
+    this.radius = blocksize / 4;
+    this.roundedX = Math.round(this.x / blocksize) * blocksize + blocksize / 2;
+    this.roundedY = Math.round(this.y / blocksize) * blocksize + blocksize / 2;
+
+
   }
-  
-  class Snake {
-    constructor(x, y) {
-      this.x = x;
-      this.y = y;
-      this.direction = "right";
-      this.radius = 12.5; 
-      this.radians = 0.75
-      this.openRate = 0.13;
-      this.rotation = 0 
-      this.score = 0;
+
+  draw(ctx) {
+    ctx.fillStyle = this.color;
+    ctx.beginPath();
+
+    ctx.arc(this.roundedX, this.roundedY, this.radius, 0, Math.PI * 2 );
+    ctx.lineTo(this.roundedX, this.roundedY);
+    ctx.fill();
+    ctx.closePath();
+    ctx.restore()
+  }
+}
+
+
+class Snake2 {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+    this.direction = "right";
+    this.radius = blocksize / 2; 
+    this.radians = 0.75
+    this.openRate = 0.13;
+    this.rotation = 0 
+   
+    this.scorePlayer1 = 0;
+    this.scorePlayer2 = 0;
+  }
+
+  updateMouth() {
+    if (this.radians < 0 || this.radians > .75) {
+      this.openRate = -this.openRate;
     }
-  
-    updateMouth() {
-      if (this.radians < 0 || this.radians > .75) {
-        this.openRate = -this.openRate;
-      }
-      this.radians += this.openRate;
-    }
-  
-    draw(ctx) {
-      ctx.save()
-      ctx.translate(this.x, this.y)
-      ctx.rotate(this.rotation)
-      ctx.translate(-this.x, -this.y)
-      this.updateMouth();
-     
-      ctx.fillStyle = "yellow";
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.radius, this.radians, Math.PI * 2 - 0.75);
-      ctx.lineTo(this.x, this.y);
-      ctx.fill();
-      ctx.closePath();
-      ctx.restore()
-    }
-  
-    move(direction, steps) {
-      const moveAmount = steps * blocksize;
-  
-      switch (direction) {
-        case "left":
+    this.radians += this.openRate;
+  }
+
+  draw(ctx) {
+    ctx.save()
+    ctx.translate(this.x, this.y)
+    ctx.rotate(this.rotation)
+    ctx.translate(-this.x, -this.y)
+    this.updateMouth();
+   
+    ctx.fillStyle = "blue";
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.radius, this.radians, Math.PI * 2 -0.25 );
+    ctx.lineTo(this.x, this.y);
+    ctx.fill();
+    ctx.closePath();
+    ctx.restore()
+  }
+
+  move(direction, steps) {
+    const moveAmount = steps * blocksize;
+
+    switch (direction) {
+      case "left":
+        if (this.x - moveAmount >= 0) {
           this.x -= moveAmount;
-          while (this.x < 0) {
-            this.x += cols * blocksize;
-          }
-          break;
-        case "right":
+        } else {
+          this.x = 0 + blocksize/2; // Stop at x=0 if attempting to move beyond the left boundary
+        }
+        break;
+      case "right":
+        if (this.x + moveAmount <= canvas.width) {
           this.x += moveAmount;
-          while (this.x >= cols * blocksize) {
-            this.x -= cols * blocksize;
-          }
-          break;
-        case "up":
+        } else {
+          this.x = canvas.width - blocksize/2 ; // Stop at the right boundary if attempting to move beyond it
+        }
+        break;
+      case "up":
+        if (this.y - moveAmount >= 0) {
           this.y -= moveAmount;
-          while (this.y < 0) {
-            this.y += rows * blocksize;
-          }
-          break;
-        case "down":
+        } else {
+          this.y = 0 + blocksize/2; // Stop at y=0 if attempting to move beyond the top boundary
+        }
+        break;
+      case "down":
+        if (this.y + moveAmount <= canvas.height) {
           this.y += moveAmount;
-          while (this.y >= rows * blocksize) {
-            this.y -= rows * blocksize;
-          }
-          break;
+        } else {
+          this.y = canvas.height - blocksize/2 ; // Stop at the bottom boundary if attempting to move beyond it
+        }
+        break;
+    }
+  
+  }
+}
+
+
+
+class Snake {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+    this.direction = "right";
+    this.radius = blocksize / 2; 
+    this.radians = 0.75
+    this.openRate = 0.13;
+    this.rotation = 0 
+   
+    this.scorePlayer1 = 0;
+    this.scorePlayer2 = 0;
+  }
+
+  updateMouth() {
+    if (this.radians < 0 || this.radians > .75) {
+      this.openRate = -this.openRate;
+    }
+    this.radians += this.openRate;
+  }
+
+  draw(ctx) {
+    ctx.save()
+    ctx.translate(this.x, this.y)
+    ctx.rotate(this.rotation)
+    ctx.translate(-this.x, -this.y)
+    this.updateMouth();
+   
+    ctx.fillStyle = "yellow";
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.radius, this.radians, Math.PI * 2 -0.25 );
+    ctx.lineTo(this.x, this.y);
+    ctx.fill();
+    ctx.closePath();
+    ctx.restore()
+  }
+
+  move(direction, steps) {
+    const moveAmount = steps * blocksize;
+
+    switch (direction) {
+      case "left":
+        if (this.x - moveAmount >= 0) {
+          this.x -= moveAmount;
+        } else {
+          this.x = 0 + blocksize/2; // Stop at x=0 if attempting to move beyond the left boundary
+        }
+        break;
+      case "right":
+        if (this.x + moveAmount <= canvas.width) {
+          this.x += moveAmount;
+        } else {
+          this.x = canvas.width - blocksize/2 ; // Stop at the right boundary if attempting to move beyond it
+        }
+        break;
+      case "up":
+        if (this.y - moveAmount >= 0) {
+          this.y -= moveAmount;
+        } else {
+          this.y = 0 + blocksize/2; // Stop at y=0 if attempting to move beyond the top boundary
+        }
+        break;
+      case "down":
+        if (this.y + moveAmount <= canvas.height) {
+          this.y += moveAmount;
+        } else {
+          this.y = canvas.height - blocksize/2 ; // Stop at the bottom boundary if attempting to move beyond it
+        }
+        break;
+    }
+  
+  }
+}
+
+let blocksize = 20;
+let rows = 10;
+let cols = 10;
+let canvas;
+let ctx;
+
+let snake;
+let snake2; 
+let evilFruit = [];
+let goodFruit = [];
+
+
+
+function placeEvilFruit() {
+  for (let i = 0; i < 15; i++) {
+    let x, y;
+    do {
+      x = Math.floor(Math.random() * cols) * blocksize;
+      y = Math.floor(Math.random() * rows) * blocksize;
+      // Adjust fruit position if snake is on the opposite side of the grid
+      if (snake.x >= cols * blocksize && x < cols * blocksize / 2) {
+        x += cols * blocksize;
       }
-  
-      if (this.radians < 0 || this.radians > 0.75) {
-        this.openRate = -this.openRate;
+      if (snake.y >= rows * blocksize && y < rows * blocksize / 2) {
+        y += rows * blocksize;
       }
-      this.radians += this.openRate;
-    }
+
+    } while (
+      (x === goodFruit.x && y === goodFruit.y) ||
+      (x === snake.x && y === snake.y)
+    );
+    evilFruit.push(new Fruit(x, y, "red"));
   }
-  
-  let blocksize = 25;
-  let rows = 20;
-  let cols = 20;
-  let canvas;
-  let ctx;
-  
-  let snake;
-  let evilFruit = [];
-  let goodFruit;
-  
-  function placeGoodFruit() {
-    const x = Math.floor(Math.random() * cols) * blocksize;
-    const y = Math.floor(Math.random() * rows) * blocksize;
-    goodFruit = new Fruit(x, y, "green");
+}
+
+
+function update() {
+  ctx.fillStyle = "black";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  ctx.strokeStyle = "purple";
+  ctx.lineWidth = 1;
+
+  // Draw vertical gridlines
+  for (let i = 0; i <= cols; i++) {
+    const x = i * blocksize;
+    ctx.beginPath();
+    ctx.moveTo(x, 0);
+    ctx.lineTo(x, canvas.height);
+    ctx.stroke();
   }
-  
-  function placeEvilFruit() {
-    for (let i = 0; i < 5; i++) {
-      let x, y;
-      do {
-        x = Math.floor(Math.random() * cols) * blocksize;
-        y = Math.floor(Math.random() * rows) * blocksize;
-      } while (
-        (x === goodFruit.x && y === goodFruit.y) ||
-        (x === snake.x && y === snake.y)
-      );
-      evilFruit.push(new Fruit(x, y, "red"));
-    }
+
+  // Draw horizontal gridlines
+  for (let i = 0; i <= rows; i++) {
+    const y = i * blocksize;
+    ctx.beginPath();
+    ctx.moveTo(0, y);
+    ctx.lineTo(canvas.width, y);
+    ctx.stroke();
   }
+  // Draw vertical gridlines for the new grid
+  for (let i = 0; i <= cols / 5; i++) {
+    const x = i * blocksize * 5;
+    ctx.beginPath();
+    ctx.moveTo(x, 0);
+    ctx.lineTo(x, canvas.height);
+    ctx.stroke();
+  }
+
+  // Draw horizontal gridlines for the new grid
+  for (let i = 0; i <= rows / 5; i++) {
+    const y = i * blocksize * 5;
+    ctx.beginPath();
+    ctx.moveTo(0, y);
+    ctx.lineTo(canvas.width, y);
+    ctx.stroke();
+  }
+
+
+  for (const fruit of evilFruit) {
+    fruit.draw(ctx);
+
   
-  let gameStarted = false;
-  function update() {
-    ctx.fillStyle = "black";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+   
+  }
+
+
+  snake.draw(ctx);
+  snake2.draw(ctx);
+
+  const player1NameSpan = document.getElementById("player1name");
+  const player2NameSpan = document.getElementById("player2name");
+  player1NameSpan.textContent = player1Name;
+  player2NameSpan.textContent = player2Name;
+
   
-    ctx.strokeStyle = "red";
-    ctx.lineWidth = 1;
-  
-    // Draw vertical gridlines
-    for (let i = 0; i <= cols; i++) {
-      const x = i * blocksize;
-      ctx.beginPath();
-      ctx.moveTo(x, 0);
-      ctx.lineTo(x, canvas.height);
-      ctx.stroke();
+
+}
+
+let currentPlayer = 1;
+let player1Name;
+let player2Name;
+
+
+document.addEventListener("DOMContentLoaded", function () {
+ 
+  const overlay = document.getElementById("overlay");
+  const dialogBox = document.getElementById("dialog-box");
+  const player1Input = document.getElementById("player1-input");
+  const player2Input = document.getElementById("player2-input");
+  const playButton = document.getElementById("play-button");
+
+  playButton.addEventListener("click", function () {
+    player1Name = player1Input.value;
+    player2Name = player2Input.value;
+
+    if (player1Name && player2Name) {
+        // Redirect to game page or perform any desired action
+        console.log("Player 1 Name:", player1Name);
+        console.log("Player 2 Name:", player2Name);
+        overlay.style.display = "none"; 
+
+        const playerTurnSpan = document.getElementById("playersturn");
+        playerTurnSpan.textContent = player1Name + "'s"; 
+
+    } else {
+        alert("Please enter both player names.");
     }
+});
+
+
+
+
+  const playerTurnSpan = document.getElementById("playersturn");
+  playerTurnSpan.textContent = player1Name + "'s";
+
+  canvas = document.getElementById("canvas");
+  canvas.height = rows * blocksize;
+  canvas.width = cols * blocksize;
+  ctx = canvas.getContext("2d");
   
-    // Draw horizontal gridlines
-    for (let i = 0; i <= rows; i++) {
-      const y = i * blocksize;
-      ctx.beginPath();
-      ctx.moveTo(0, y);
-      ctx.lineTo(canvas.width, y);
-      ctx.stroke();
-    }
-    // Draw vertical gridlines for the new grid
-    for (let i = 0; i <= cols / 5; i++) {
-      const x = i * blocksize * 5;
-      ctx.beginPath();
-      ctx.moveTo(x, 0);
-      ctx.lineTo(x, canvas.height);
-      ctx.stroke();
-    }
+
+  snake = new Snake(
+
+    blocksize * 0 + blocksize / 2,
+    blocksize * 0 + blocksize / 2
+  );
+
+  snake2 = new Snake2(
+    blocksize * 0 + blocksize / 2, 
+    blocksize * 1 + blocksize / 2
+  );
+
   
-    // Draw horizontal gridlines for the new grid
-    for (let i = 0; i <= rows / 5; i++) {
-      const y = i * blocksize * 5;
-      ctx.beginPath();
-      ctx.moveTo(0, y);
-      ctx.lineTo(canvas.width, y);
-      ctx.stroke();
-    }
+  placeEvilFruit();
+  setInterval(update, 100); 
+
   
+});
+
+let direction = "right";
+
+
+const directionButtons = document.querySelectorAll(".direction-btns");
+directionButtons.forEach((button) => {
+  button.addEventListener("click", function () {
+    directionButtons.forEach((btn) => {
+      btn.classList.remove("active");
+    });
+    this.classList.add("active");
+    direction = this.innerText.toLowerCase();
+
+     // Rotate the snake based on the clicked direction
+     if (currentPlayer === 1) {
+      snake.rotation = getRotationAngle(direction);
+    } else if (currentPlayer === 2) {
+      snake2.rotation = getRotationAngle(direction);
+    }
+
+  });
+});
+
+
+function getRotationAngle(direction) {
+  switch (direction) {
+    case "up":
+      return -Math.PI / 2;
+    case "down":
+      return Math.PI / 2;
+    case "left":
+      return Math.PI;
+    case "right":
+      return 0;
+    default:
+      return 0;
+  }
+}
+
+function handleDiceRoll() {
+  const diceContainer = document.querySelector(".dice-container");
+  const diceElements = diceContainer.querySelectorAll(".dice");
+  let diceResult = 0;
+
+  diceElements.forEach((diceElement) => {
+    const dotCount = diceElement.querySelectorAll(".dice-dot").length;
+    diceResult += dotCount;
+  });
+
+  const stepsInput = document.getElementById("steps");
+  stepsInput.textContent = diceResult.toString();
+
+  const previousX = currentPlayer === 1 ? snake.x : snake2.x;
+  const previousY = currentPlayer === 1 ? snake.y : snake2.y;
+
+
+  if (currentPlayer === 1) {
+    snake.move(direction, diceResult);
+  } else if (currentPlayer === 2) {
+    snake2.move(direction, diceResult);
+  }
+
+  const newX = currentPlayer === 1 ? snake.x : snake2.x;
+  const newY = currentPlayer === 1 ? snake.y : snake2.y;
+
+
+  
+  // Collision detection for Snake 1
+  if (currentPlayer === 1) {
+    const snake1CenterX = newX;
+    const snake1CenterY = newY;
+
     for (const fruit of evilFruit) {
-      fruit.draw(ctx);
+      const fruit1CenterX = fruit.roundedX;
+      const fruit1CenterY = fruit.roundedY;
+
+      if (
+        snake1CenterY === fruit1CenterY &&
+        (
+          (previousX > fruit1CenterX && newX <= fruit1CenterX) ||
+          (previousX < fruit1CenterX && newX >= fruit1CenterX)
+        ) || 
+        snake1CenterX === fruit1CenterX &&
+        (
+          (previousY > fruit1CenterY && newY <= fruit1CenterY) ||
+          (previousY < fruit1CenterY && newY >= fruit1CenterY)
+        )
+      ) 
+        
+      {
+        snake.scorePlayer1++;
+        evilFruit.splice(evilFruit.indexOf(fruit), 1);
+      }
     }
-    goodFruit.draw(ctx);
-    snake.draw(ctx);
+  }
+
+  // Collision detection for Snake 2
+  if (currentPlayer === 2) {
+    const snake2CenterX = newX;
+    const snake2CenterY = newY;
+
+    for (const fruit of evilFruit) {
+      const fruit2CenterX = fruit.roundedX;
+      const fruit2CenterY = fruit.roundedY;
+
+      if (
+        (snake2CenterY === fruit2CenterY &&
+        (
+          (previousX > fruit2CenterX && newX <= fruit2CenterX) ||
+          (previousX < fruit2CenterX && newX >= fruit2CenterX)
+        ) )|| 
+        (snake2CenterX === fruit2CenterX &&
+        (
+          (previousY > fruit2CenterY && newY <= fruit2CenterY) ||
+          (previousY < fruit2CenterY && newY >= fruit2CenterY)
+        )
+        )
+
+
+      ) {
+        snake.scorePlayer2++;
+        evilFruit.splice(evilFruit.indexOf(fruit), 1);
+      }
+    }
+  }
+
+
+ 
+  update();
+
+  // const totalFruits = evilFruit.length;
+
+  // // Check if all fruits have disappeared
+  // if (totalFruits === 0) {
+  //   let winner = "";
+  //   let highestScore = -1;
+
+  //   // Determine the winner based on the highest score
+  //   if (snake.scorePlayer1 > highestScore) {
+  //     winner = player1Name;
+  //     highestScore = snake.scorePlayer1;
+  //   }
+  //   if (snake2.scorePlayer2 > highestScore) {
+  //     winner = player2Name;
+  //     highestScore = snake2.scorePlayer2;
+  //   }
+
+  //   // Display the winner in a popup window
+  //   alert(`Game Over! ${winner} wins with a score of ${highestScore}.`);
+
+  //   // Stop the game by removing the event listeners for dice roll
+  //   const directionButtons = document.querySelectorAll(".direction-btns");
+  //   directionButtons.forEach((button) => {
+  //     button.removeEventListener("click", handleDiceRoll);
+  //   });
+
+  //   return; // Exit the function to prevent further execution
+  // }
+
+
+   // Variables to store references to the overlay and dialog box elements
+const overlay = document.getElementById("end-dialog-overlay");
+const dialogBox = document.getElementById("end-dialog-box");
+const winnerScore = document.getElementById("winner-score");
+const playAgainButton = document.getElementById("play-again-button");
+
+// Function to show the dialog box overlay
+function showDialogueBox(winner, highestScore) {
+  // Set the winner and score text
+  winnerScore.textContent = `${winner} wins with a score of ${highestScore}.`;
+
+  // Show the overlay
+  overlay.style.display = "flex";
+}
+
+// Function to hide the dialog box overlay
+function hideDialogueBox() {
+  // Hide the overlay
+  overlay.style.display = "none";
+}
+
+// Function to check if the game has ended
+function checkGameEnd() {
+const totalFruits = evilFruit.length;
+
+  // Check if all fruits have disappeared
+  if (totalFruits === 0) {
+    let winner = "";
+    let highestScore = -1;
+
+    // Determine the winner based on the highest score
+    if (snake.scorePlayer1 > highestScore) {
+      winner = player1Name;
+      highestScore = snake.scorePlayer1;
+    }
+    if (snake2.scorePlayer2 > highestScore) {
+      winner = player2Name;
+      highestScore = snake2.scorePlayer2;
+    }
+
+    // Show the dialog box overlay
+    showDialogueBox(winner, highestScore);
+  }
+}
+
+
+// Event listener for the play again button
+playAgainButton.addEventListener("click", () => {
+  // Hide the dialog box overlay
+  hideDialogueBox();
+
+  // Reset the game or perform any necessary actions
+});
+
+checkGameEnd();
+
+
+  
+  
+  const scoreElementPlayer1 = document.getElementById("player1score");
+  const scoreElementPlayer2 = document.getElementById("player2score");
+  if (currentPlayer === 1) {
+    scoreElementPlayer1.textContent = snake.scorePlayer1.toString();
+  } else if (currentPlayer === 2) {
+    scoreElementPlayer2.textContent = snake.scorePlayer2.toString();
   }
   
-  let currentPlayer = 1;
-  let player1Name;
-  let player2Name;
-  document.addEventListener("DOMContentLoaded", function () {
-    player1Name = prompt("Enter the name of Player 1:");
-    player2Name = prompt("Enter the name of Player 2:");
-  
+
+  if (currentPlayer === 1) {
+    currentPlayer = 2;
+    const playerTurnSpan = document.getElementById("playersturn");
+    playerTurnSpan.textContent = player2Name + "'s";
+  } else {
+    currentPlayer = 1;
     const playerTurnSpan = document.getElementById("playersturn");
     playerTurnSpan.textContent = player1Name + "'s";
-  
-    canvas = document.getElementById("canvas");
-    canvas.height = rows * blocksize;
-    canvas.width = cols * blocksize;
-    ctx = canvas.getContext("2d");
-  
-    snake = new Snake(
-      blocksize * 5 + blocksize / 2,
-      blocksize * 5 + blocksize / 2
-    );
-  
-    placeGoodFruit();
-    placeEvilFruit();
-    setInterval(update, 100); // Update the canvas every 100 milliseconds
+  }
+  directionButtons.forEach((btn) => {
+    btn.classList.remove("active");
   });
-  
-  let previousDirection = "right";
-  let direction = previousDirection;
-  
-  const directionButtons = document.querySelectorAll(".direction-btns");
-  directionButtons.forEach((button) => {
-    button.addEventListener("click", function () {
-      directionButtons.forEach((btn) => {
-        btn.style.backgroundColor = "";
-      });
-      this.style.backgroundColor = "yellow";
-      direction = this.innerText.toLowerCase();
-    });
-  });
-  
-  function handleDiceRoll() {
-    const diceContainer = document.querySelector(".dice-container");
-    const diceElements = diceContainer.querySelectorAll(".dice");
-    let diceResult = 0;
-  
-    diceElements.forEach((diceElement) => {
-      const dotCount = diceElement.querySelectorAll(".dice-dot").length;
-      diceResult += dotCount;
-    });
-  
-    const stepsInput = document.getElementById("steps");
-    stepsInput.value = diceResult;
-  
-    const previousX = snake.x;
-    const previousY = snake.y;
-  
-    snake.move(previousDirection, diceResult);
-  
-    const newX = snake.x;
-    const newY = snake.y;
-  
-    previousDirection = direction;
-  
-    if (direction === "left") {
-      snake.rotation = Math.PI;
-    } else if (direction === "right") {
-      snake.rotation = Math.PI * 0;
-    } else if (direction === "up") {
-      snake.rotation = Math.PI * 1.5;
-    } else if (direction === "down") {
-      snake.rotation = Math.PI * 0.5;
-    }
-  
-    update();
-  
-    let fruitEaten = false;
-  
-    for (let i = 0; i < evilFruit.length; i++) {
-      const fruit = evilFruit[i];
-    
-      const snakeCenterX = snake.x;
-      const snakeCenterY = snake.y;
-      const fruitCenterX = fruit.x + blocksize / 2;
-      const fruitCenterY = fruit.y + blocksize / 2;
-    
-      const distanceX = snakeCenterX - fruitCenterX;
-      const distanceY = snakeCenterY - fruitCenterY;
-      const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
-    
-      if (distance <= snake.radius + blocksize / 2) {
-        // Snake passed over an evil fruit, decrease score and remove the fruit
-        if (currentPlayer === 1) {
-          snake.score--;
-        } else if (currentPlayer === 2) {
-          snake.score--;
-          fruitEaten = true;
-        }
-        evilFruit.splice(i, 1); // Remove the collided fruit from the array
-        i--; // Decrement the index to correctly process the next fruit
-      }
-    }
-    
-    
-    if (fruitEaten) {
-      evilFruit = evilFruit.filter(
-        (fruit) => !(fruit.x === newX && fruit.y === newY)
-      );
-    }
-    
-    const scoreElement = document.getElementById("player1score");
-    scoreElement.textContent = snake.score.toString();
-    
-  
-    if (currentPlayer === 1) {
-      currentPlayer = 2;
-      const playerTurnSpan = document.getElementById("playersturn");
-      playerTurnSpan.textContent = player2Name + "'s";
-    } else {
-      currentPlayer = 1;
-      const playerTurnSpan = document.getElementById("playersturn");
-      playerTurnSpan.textContent = player1Name + "'s";
-    }
+}
+
+function createDice(number) {
+  const dotPositionMatrix = {
+    1: [[50, 50]],
+    2: [[20, 20], [80, 80]],
+    3: [[20, 20], [50, 50], [80, 80]],
+    4: [[20, 20], [20, 80], [80, 20], [80, 80]],
+    5: [[20, 20], [20, 80], [50, 50], [80, 20], [80, 80]],
+    6: [[20, 20], [20, 80], [50, 20], [50, 80], [80, 20], [80, 80]],
+  };
+
+  const dice = document.createElement("div");
+  dice.classList.add("dice");
+
+  for (const dotPosition of dotPositionMatrix[number]) {
+    const dot = document.createElement("div");
+    dot.classList.add("dice-dot");
+    dot.style.setProperty("--top", dotPosition[0] + "%");
+    dot.style.setProperty("--left", dotPosition[1] + "%");
+    dice.appendChild(dot);
   }
-  
-  function createDice(number) {
-    const dotPositionMatrix = {
-      1: [[50, 50]],
-      2: [[20, 20], [80, 80]],
-      3: [[20, 20], [50, 50], [80, 80]],
-      4: [[20, 20], [20, 80], [80, 20], [80, 80]],
-      5: [[20, 20], [20, 80], [50, 50], [80, 20], [80, 80]],
-      6: [[20, 20], [20, 80], [50, 20], [50, 80], [80, 20], [80, 80]],
-    };
-  
-    const dice = document.createElement("div");
-    dice.classList.add("dice");
-  
-    for (const dotPosition of dotPositionMatrix[number]) {
-      const dot = document.createElement("div");
-      dot.classList.add("dice-dot");
-      dot.style.setProperty("--top", dotPosition[0] + "%");
-      dot.style.setProperty("--left", dotPosition[1] + "%");
-      dice.appendChild(dot);
-    }
-  
-    return dice;
+
+  return dice;
+}
+
+function randomizeDice(diceContainer, numberOfDice) {
+  diceContainer.innerHTML = "";
+
+  for (let i = 0; i < numberOfDice; i++) {
+    const random = Math.floor(Math.random() * 6 + 1);
+    const dice = createDice(random);
+    diceContainer.appendChild(dice);
   }
+
   
-  function randomizeDice(diceContainer, numberOfDice) {
-    diceContainer.innerHTML = "";
-  
-    for (let i = 0; i < numberOfDice; i++) {
-      const random = Math.floor(Math.random() * 6 + 1);
-      const dice = createDice(random);
-      diceContainer.appendChild(dice);
-    }
-  }
-  
-  const NUMBER_OF_DICE = 2;
-  const diceContainer = document.querySelector(".dice-container");
-  const btnRollDice = document.querySelector(".btn-roll-dice");
-  
+}
+
+const NUMBER_OF_DICE = 1;
+const diceContainer = document.querySelector(".dice-container");
+const btnRollDice = document.querySelector(".btn-roll-dice");
+
+randomizeDice(diceContainer, NUMBER_OF_DICE);
+
+btnRollDice.addEventListener("click", () => {
   randomizeDice(diceContainer, NUMBER_OF_DICE);
+  handleDiceRoll();
   
-  btnRollDice.addEventListener("click", () => {
-    randomizeDice(diceContainer, NUMBER_OF_DICE);
-    handleDiceRoll();
-  });
-  
+});

@@ -71,15 +71,25 @@
 <div id="overlay">
     <div id="dialog-box">
         <h2>EAT THEM ALL</h2>
-        <p class="prompt-intro"> Welcome to "eat them all"!<br><br>  The game will be end once there is all the fruits are eaten and nothing left on tha table! You and your rival will take in turn: choose your direction to go and roll the die to eat the fruits. <br><br> Remember try to avoid the evil-looking fruits and eat more the cute-looking fruits. <br><br>  Whoever has highest score once all the table is clear win!</p>
+        <p class="prompt-intro"> Welcome to "eat them all"!<br><br>  The game will end once all the fruits are eaten and nothing left on tha table!<br><br> You and your rival will take turn: choose your direction to go and roll the die to eat the fruits. <br><br>  Whoever has highest score once all the table is clear win!</p>
 
         <p>Enter Player Names</p>
-
+        <div id="input-player-container">
         <input type="text" id="player1-input" placeholder="Player 1 Name">
         <input type="text" id="player2-input" placeholder="Player 2 Name">
         <button id="play-button">Play</button>
+        </div>
     </div>
 </div>
+
+
+<div id="end-dialog-overlay">
+    <div id="end-dialog-box">
+      <h2>Game Over!</h2>
+      <p id="winner-score"></p>
+      <button id="play-again-button">Play Again</button>
+    </div>
+  </div>
 
         
    
