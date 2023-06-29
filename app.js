@@ -53,7 +53,7 @@ class Snake2 {
     ctx.translate(-this.x, -this.y)
     this.updateMouth();
    
-    ctx.fillStyle = "blue";
+    ctx.fillStyle = "#E84DB4";
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.radius, this.radians, Math.PI * 2 -0.25 );
     ctx.lineTo(this.x, this.y);
@@ -129,7 +129,7 @@ class Snake {
     ctx.translate(-this.x, -this.y)
     this.updateMouth();
    
-    ctx.fillStyle = "yellow";
+    ctx.fillStyle = "#5FA0F5";
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.radius, this.radians, Math.PI * 2 -0.25 );
     ctx.lineTo(this.x, this.y);
@@ -206,17 +206,17 @@ function placeEvilFruit() {
       (x === goodFruit.x && y === goodFruit.y) ||
       (x === snake.x && y === snake.y)
     );
-    evilFruit.push(new Fruit(x, y, "red"));
+    evilFruit.push(new Fruit(x, y, "#F6F31A"));
   }
 }
 
 
 function update() {
-  ctx.fillStyle = "black";
+  ctx.fillStyle = "#380700";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  ctx.strokeStyle = "purple";
-  ctx.lineWidth = 1;
+  ctx.strokeStyle = "white";
+  ctx.lineWidth = 0.5;
 
   // Draw vertical gridlines
   for (let i = 0; i <= cols; i++) {
@@ -464,35 +464,7 @@ function handleDiceRoll() {
  
   update();
 
-  // const totalFruits = evilFruit.length;
-
-  // // Check if all fruits have disappeared
-  // if (totalFruits === 0) {
-  //   let winner = "";
-  //   let highestScore = -1;
-
-  //   // Determine the winner based on the highest score
-  //   if (snake.scorePlayer1 > highestScore) {
-  //     winner = player1Name;
-  //     highestScore = snake.scorePlayer1;
-  //   }
-  //   if (snake2.scorePlayer2 > highestScore) {
-  //     winner = player2Name;
-  //     highestScore = snake2.scorePlayer2;
-  //   }
-
-  //   // Display the winner in a popup window
-  //   alert(`Game Over! ${winner} wins with a score of ${highestScore}.`);
-
-  //   // Stop the game by removing the event listeners for dice roll
-  //   const directionButtons = document.querySelectorAll(".direction-btns");
-  //   directionButtons.forEach((button) => {
-  //     button.removeEventListener("click", handleDiceRoll);
-  //   });
-
-  //   return; // Exit the function to prevent further execution
-  // }
-
+  
 
    // Variables to store references to the overlay and dialog box elements
 const overlay = document.getElementById("end-dialog-overlay");
@@ -565,11 +537,17 @@ checkGameEnd();
   if (currentPlayer === 1) {
     currentPlayer = 2;
     const playerTurnSpan = document.getElementById("playersturn");
+    const playerTurnContainer = document.getElementById("playersturn-container")
     playerTurnSpan.textContent = player2Name + "'s";
+    playerTurnContainer.style.backgroundColor = "#E84DB4"; 
+
+
   } else {
     currentPlayer = 1;
     const playerTurnSpan = document.getElementById("playersturn");
+    const playerTurnContainer = document.getElementById("playersturn-container")
     playerTurnSpan.textContent = player1Name + "'s";
+    playerTurnContainer.style.backgroundColor = "#5FA0F5"; 
   }
   directionButtons.forEach((btn) => {
     btn.classList.remove("active");
