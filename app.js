@@ -586,8 +586,6 @@ function randomizeDice(diceContainer, numberOfDice) {
     const dice = createDice(random);
     diceContainer.appendChild(dice);
   }
-
-  
 }
 
 const NUMBER_OF_DICE = 1;
