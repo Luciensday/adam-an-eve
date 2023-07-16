@@ -1,4 +1,4 @@
-
+// Fruit and Snake constructor 
 
 class Fruit {
   constructor(x, y, color) {
@@ -38,7 +38,8 @@ class Snake2 {
     this.scorePlayer1 = 0;
     this.scorePlayer2 = 0;
   }
-
+  
+  // Set-up mouth opening oscilating  
   updateMouth() {
     if (this.radians < 0 || this.radians > .75) {
       this.openRate = -this.openRate;
@@ -70,28 +71,28 @@ class Snake2 {
         if (this.x - moveAmount >= 0) {
           this.x -= moveAmount;
         } else {
-          this.x = 0 + blocksize/2; // Stop at x=0 if attempting to move beyond the left boundary
+          this.x = 0 + blocksize/2; //left boundary setting 
         }
         break;
       case "right":
         if (this.x + moveAmount <= canvas.width) {
           this.x += moveAmount;
         } else {
-          this.x = canvas.width - blocksize/2 ; // Stop at the right boundary if attempting to move beyond it
+          this.x = canvas.width - blocksize/2 ; // left boundary setting
         }
         break;
       case "up":
         if (this.y - moveAmount >= 0) {
           this.y -= moveAmount;
         } else {
-          this.y = 0 + blocksize/2; // Stop at y=0 if attempting to move beyond the top boundary
+          this.y = 0 + blocksize/2; // top boundary setting
         }
         break;
       case "down":
         if (this.y + moveAmount <= canvas.height) {
           this.y += moveAmount;
         } else {
-          this.y = canvas.height - blocksize/2 ; // Stop at the bottom boundary if attempting to move beyond it
+          this.y = canvas.height - blocksize/2 ; // bottom boundary setting
         }
         break;
     }
@@ -146,28 +147,28 @@ class Snake {
         if (this.x - moveAmount >= 0) {
           this.x -= moveAmount;
         } else {
-          this.x = 0 + blocksize/2; // Stop at x=0 if attempting to move beyond the left boundary
+          this.x = 0 + blocksize/2; 
         }
         break;
       case "right":
         if (this.x + moveAmount <= canvas.width) {
           this.x += moveAmount;
         } else {
-          this.x = canvas.width - blocksize/2 ; // Stop at the right boundary if attempting to move beyond it
+          this.x = canvas.width - blocksize/2 ; 
         }
         break;
       case "up":
         if (this.y - moveAmount >= 0) {
           this.y -= moveAmount;
         } else {
-          this.y = 0 + blocksize/2; // Stop at y=0 if attempting to move beyond the top boundary
+          this.y = 0 + blocksize/2; 
         }
         break;
       case "down":
         if (this.y + moveAmount <= canvas.height) {
           this.y += moveAmount;
         } else {
-          this.y = canvas.height - blocksize/2 ; // Stop at the bottom boundary if attempting to move beyond it
+          this.y = canvas.height - blocksize/2 ; 
         }
         break;
     }
@@ -183,7 +184,7 @@ let ctx;
 
 let snake;
 let snake2; 
-let evilFruit = [];
+let evilFruit = []; 
 let goodFruit = [];
 
 
@@ -210,7 +211,6 @@ function placeEvilFruit() {
   }
 }
 
-
 function update() {
   ctx.fillStyle = "#380700";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -235,7 +235,7 @@ function update() {
     ctx.lineTo(canvas.width, y);
     ctx.stroke();
   }
-  // Draw vertical gridlines for the new grid
+  // Draw vertical gridlines for the thicker grid
   for (let i = 0; i <= cols / 5; i++) {
     const x = i * blocksize * 5;
     ctx.beginPath();
@@ -244,7 +244,7 @@ function update() {
     ctx.stroke();
   }
 
-  // Draw horizontal gridlines for the new grid
+  // Draw horizontal gridlines for the thicker grid
   for (let i = 0; i <= rows / 5; i++) {
     const y = i * blocksize * 5;
     ctx.beginPath();
@@ -265,6 +265,8 @@ function update() {
   snake.draw(ctx);
   snake2.draw(ctx);
 
+
+  // player's name display in scoring board
   const player1NameSpan = document.getElementById("player1name");
   const player2NameSpan = document.getElementById("player2name");
   player1NameSpan.textContent = player1Name;
@@ -292,7 +294,7 @@ document.addEventListener("DOMContentLoaded", function () {
     player2Name = player2Input.value;
 
     if (player1Name && player2Name) {
-        // Redirect to game page or perform any desired action
+        // Redirect to game page
         console.log("Player 1 Name:", player1Name);
         console.log("Player 2 Name:", player2Name);
         overlay.style.display = "none"; 
@@ -307,7 +309,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
+  // player's name display in player's turn board
   const playerTurnSpan = document.getElementById("playersturn");
   playerTurnSpan.textContent = player1Name + "'s";
 
@@ -334,7 +336,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   
 });
-
+// default direction is right
 let direction = "right";
 
 
@@ -554,6 +556,7 @@ checkGameEnd();
   });
 }
 
+// dice dot placement by number 1-6
 function createDice(number) {
   const dotPositionMatrix = {
     1: [[50, 50]],
