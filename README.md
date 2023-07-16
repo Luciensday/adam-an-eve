@@ -2,6 +2,7 @@
 
 
 **What inspired me to create Eat-Them-All? **
+
 I love playing board game and I had an idea of creating a game for two players while learning classic snake game and further integerate more technique from other games such as Monopoly, Pacman, DiceRolling..etc. It is a strategy game but also need some dice-rolling luck to win the game!
 
 
