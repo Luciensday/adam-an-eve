@@ -8,14 +8,25 @@ I love playing board game and I had an idea of creating a game for two players w
 
 
 **Game Rule**
-This is a 2-player game. first put your name in the box and start the game! You and your rival will take turn: choose your direction to go and roll the die to eat as many as possible of fruits.  Every fruit eaten your score will +1
+This is a 2-player game. first put your name in the box and start the game! 
+<img width="1193" alt="Screenshot 2023-07-17 at 10 01 11" src="https://github.com/Luciensday/eat-them-all/assets/128807685/c279704e-0d3b-433f-8e51-deaa6db4f4d9">
+
+
+
+You and your rival will take turn: choose your direction to go and roll the die to eat as many as possible of fruits.  Every fruit eaten your score will +1
+<img width="536" alt="Screenshot 2023-07-17 at 10 01 42" src="https://github.com/Luciensday/eat-them-all/assets/128807685/740ac496-7bf1-4163-b0a9-77db34c0193b">
+
 
 
 **How to win**
 The game will end once all the fruits are eaten and nothing left on tha table.  Whoever has highest score once all the table is clear win!
+<img width="537" alt="Screenshot 2023-07-17 at 10 03 51" src="https://github.com/Luciensday/eat-them-all/assets/128807685/b618d305-820c-4c56-ba7b-bd01f77a2914">
+
 
 **What's on the gameboard**
 two players on the gameboard (player one will be yellow circle / player two will be pink circle) and multiples fruits.  
+<img width="386" alt="Screenshot 2023-07-17 at 10 11 44" src="https://github.com/Luciensday/eat-them-all/assets/128807685/8e9b1bbe-3e6b-46fd-be9e-c1d3def83c3b">
+
 
 
 
