@@ -276,6 +276,8 @@ function update() {
 
 }
 
+
+// DOM Content loaded 
 let currentPlayer = 1;
 let player1Name;
 let player2Name;
@@ -336,10 +338,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   
 });
+
+
 // default direction is right
 let direction = "right";
 
-
+// Direction Button setting to have color shown when cliick and disapear when click other direction 
 const directionButtons = document.querySelectorAll(".direction-btns");
 directionButtons.forEach((button) => {
   button.addEventListener("click", function () {
