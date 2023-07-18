@@ -24,7 +24,7 @@ The game will end once all the fruits are eaten and nothing left on tha table.  
 
 
 **What's on the gameboard**
-two players on the gameboard (player one will be yellow circle / player two will be pink circle) and multiples fruits.  
+two players on the gameboard (player one will be yellow circle / player two will be pink circle) and multiples fruits.   the month of players will be open toward the moving direction and can be changed by click direction button (up, down, left, right)
 <img width="386" alt="Screenshot 2023-07-17 at 10 11 44" src="https://github.com/Luciensday/eat-them-all/assets/128807685/8e9b1bbe-3e6b-46fd-be9e-c1d3def83c3b">
 
 
