@@ -108,7 +108,6 @@ body {
 /* webkit to clear the bug for Safari   */
   #canvas-score-container {
     -webkit-display: -webkit-grid; 
-  
     grid-template-rows: auto;
     padding: 1rem;
     position: relative;
@@ -147,8 +146,6 @@ body {
   }
   
   #canvas {
-  
-    
     max-height:100%;
     width:100%; 
     margin: 0; 
