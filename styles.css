@@ -238,13 +238,12 @@ body {
   color: #FFFFFF;
   cursor: pointer;
   height: 2.4rem;
-  font-size: 9px;
+  font-size: 8px;
   width: 2.4rem;  
   outline: 0;
   overflow: hidden;
   pointer-events: auto;
   position: relative;
-  text-align: center;
   user-select: none;
   vertical-align: top;
   
@@ -318,10 +317,9 @@ body {
     pointer-events: auto;
     position: relative;
     text-align: center;
-   
     vertical-align: top; 
     border: 0;
-    font-size: 9px; 
+    font-size: 11px; 
     background-image: linear-gradient(-180deg, #FF7E31, #E62C03);
     transition: 0.2s all;
     grid-column: span 2; 
