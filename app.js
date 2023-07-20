@@ -185,7 +185,7 @@ let ctx;
 let snake;
 let snake2; 
 let evilFruit = []; 
-let goodFruit = [];
+// let goodFruit = [];
 
 
 
@@ -204,7 +204,7 @@ function placeEvilFruit() {
       }
 
     } while (
-      (x === goodFruit.x && y === goodFruit.y) ||
+      // (x === goodFruit.x && y === goodFruit.y) ||
       (x === snake.x && y === snake.y)
     );
     evilFruit.push(new Fruit(x, y, "#F6F31A"));
