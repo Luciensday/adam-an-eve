@@ -205,7 +205,7 @@ function placeEvilFruit() {
 
     } while (
     
-      (x === snake.x && y === snake.y)
+    (x === snake.x && y === snake.y) || (x === snake2.x && y === snake2.y)
     );
     evilFruit.push(new Fruit(x, y, "#F6F31A"));
   }
