@@ -1,5 +1,4 @@
 // Fruit and Snake constructor 
-
 class Fruit {
   constructor(x, y, color) {
     this.x = x;
@@ -7,9 +6,7 @@ class Fruit {
     this.color = color;
     this.radius = blocksize / 4;
     this.roundedX = Math.round(this.x / blocksize) * blocksize + blocksize / 2;
-    this.roundedY = Math.round(this.y / blocksize) * blocksize + blocksize / 2;
-
-
+    this.roundedY = Math.round(this.y / blocksize) * blocksize + blocksize / 2
   }
 
   draw(ctx) {
@@ -99,7 +96,6 @@ class Snake2 {
   
   }
 }
-
 
 
 class Snake {
@@ -462,11 +458,8 @@ function handleDiceRoll() {
     }
   }
 
-
  
   update();
-
-  
 
 // Variables to store references to the overlay and dialog box elements
 const overlay = document.getElementById("end-dialog-overlay");
