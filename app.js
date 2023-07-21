@@ -441,8 +441,6 @@ function handleDiceRoll() {
           (previousY < fruit2CenterY && newY >= fruit2CenterY)
         )
         )
-
-
       ) {
         snake.scorePlayer2++;
         evilFruit.splice(evilFruit.indexOf(fruit), 1);
