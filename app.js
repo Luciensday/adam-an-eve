@@ -256,12 +256,8 @@ function update() {
 
   for (const fruit of evilFruit) {
     fruit.draw(ctx);
-
-  
-   
+ 
   }
-
-
   snake.draw(ctx);
   snake2.draw(ctx);
 
@@ -472,7 +468,7 @@ function handleDiceRoll() {
 
   
 
-   // Variables to store references to the overlay and dialog box elements
+// Variables to store references to the overlay and dialog box elements
 const overlay = document.getElementById("end-dialog-overlay");
 const dialogBox = document.getElementById("end-dialog-box");
 const winnerScore = document.getElementById("winner-score");
