@@ -1,5 +1,4 @@
 // Fruit and Snake constructor 
-
 class Fruit {
   constructor(x, y, color) {
     this.x = x;
@@ -7,9 +6,7 @@ class Fruit {
     this.color = color;
     this.radius = blocksize / 4;
     this.roundedX = Math.round(this.x / blocksize) * blocksize + blocksize / 2;
-    this.roundedY = Math.round(this.y / blocksize) * blocksize + blocksize / 2;
-
-
+    this.roundedY = Math.round(this.y / blocksize) * blocksize + blocksize / 2
   }
 
   draw(ctx) {
@@ -101,7 +98,6 @@ class Snake2 {
 }
 
 
-
 class Snake {
   constructor(x, y) {
     this.x = x;
@@ -186,9 +182,6 @@ let snake;
 let snake2; 
 let evilFruit = []; 
 
-
-
-
 function placeEvilFruit() {
   for (let i = 0; i < 15; i++) {
     let x, y;
@@ -256,12 +249,8 @@ function update() {
 
   for (const fruit of evilFruit) {
     fruit.draw(ctx);
-
-  
-   
+ 
   }
-
-
   snake.draw(ctx);
   snake2.draw(ctx);
 
@@ -271,11 +260,7 @@ function update() {
   const player2NameSpan = document.getElementById("player2name");
   player1NameSpan.textContent = player1Name;
   player2NameSpan.textContent = player2Name;
-
-  
-
 }
-
 
 // DOM Content loaded 
 let currentPlayer = 1;
@@ -322,7 +307,6 @@ document.addEventListener("DOMContentLoaded", function () {
   
 
   snake = new Snake(
-
     blocksize * 0 + blocksize / 2,
     blocksize * 0 + blocksize / 2
   );
@@ -457,8 +441,6 @@ function handleDiceRoll() {
           (previousY < fruit2CenterY && newY >= fruit2CenterY)
         )
         )
-
-
       ) {
         snake.scorePlayer2++;
         evilFruit.splice(evilFruit.indexOf(fruit), 1);
@@ -466,13 +448,10 @@ function handleDiceRoll() {
     }
   }
 
-
  
   update();
 
-  
-
-   // Variables to store references to the overlay and dialog box elements
+// Variables to store references to the overlay and dialog box elements
 const overlay = document.getElementById("end-dialog-overlay");
 const dialogBox = document.getElementById("end-dialog-box");
 const winnerScore = document.getElementById("winner-score");
