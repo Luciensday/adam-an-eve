@@ -182,9 +182,6 @@ let snake;
 let snake2; 
 let evilFruit = []; 
 
-
-
-
 function placeEvilFruit() {
   for (let i = 0; i < 15; i++) {
     let x, y;
@@ -263,11 +260,7 @@ function update() {
   const player2NameSpan = document.getElementById("player2name");
   player1NameSpan.textContent = player1Name;
   player2NameSpan.textContent = player2Name;
-
-  
-
 }
-
 
 // DOM Content loaded 
 let currentPlayer = 1;
@@ -314,7 +307,6 @@ document.addEventListener("DOMContentLoaded", function () {
   
 
   snake = new Snake(
-
     blocksize * 0 + blocksize / 2,
     blocksize * 0 + blocksize / 2
   );
