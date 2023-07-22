@@ -573,7 +573,7 @@ function randomizeDice(diceContainer, numberOfDice) {
     diceContainer.appendChild(dice);
   }
 }
-
+// dice number is 1, so one dice. we can change to two for two dices 
 const NUMBER_OF_DICE = 1;
 const diceContainer = document.querySelector(".dice-container");
 const btnRollDice = document.querySelector(".btn-roll-dice");
