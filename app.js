@@ -539,7 +539,7 @@ checkGameEnd();
   });
 }
 
-// dice dot placement by number 1-6
+// dice dot placement by number 1-6, number represent position of dots 
 function createDice(number) {
   const dotPositionMatrix = {
     1: [[50, 50]],
@@ -580,6 +580,7 @@ const btnRollDice = document.querySelector(".btn-roll-dice");
 
 randomizeDice(diceContainer, NUMBER_OF_DICE);
 
+// click roll dice even trigger hadledicerolle ()
 btnRollDice.addEventListener("click", () => {
   randomizeDice(diceContainer, NUMBER_OF_DICE);
   handleDiceRoll();
