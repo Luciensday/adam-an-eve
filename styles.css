@@ -1,17 +1,14 @@
 body {
-    
     text-align: center;
     width: 100%;
     height: 100%;
     margin: 0px;
     padding: 0px;
     font-family: 'Bruno Ace', cursive;
-   
   }
 
 
   #overlay {
-   
     position: fixed; 
     top: 0;
     left: 0;
@@ -22,6 +19,7 @@ body {
     justify-content: center;
     align-items: center;
 }
+
 #dialog-box {
     background-color: #fff;
     padding: 20px;
@@ -54,9 +52,7 @@ body {
   align-items: center ;
 }
 
-
-
-  #background-container{
+#background-container{
     background-color: #EB891A;
     box-sizing: border-box;
     display: flex; 
@@ -66,9 +62,8 @@ body {
     width: 100vw; 
     overflow-y: hidden;  
     position: relative; 
-    
-
   }
+
   #game-container {
     background-color: #FFDDB7;
     width: 80%;
@@ -78,14 +73,9 @@ body {
     align-items: center;
     position: absolute; 
     box-sizing: border-box;
-    
     box-shadow:rgba(0, 0, 0, 0.1) 0 2px 4px;
     border-radius:90px ;
-    
-    
-    
   }
-  
   
   .playersname-in-score-font{
     font-size: 0.6rem; 
@@ -94,7 +84,6 @@ body {
     word-wrap: break-word; 
     margin-bottom: 0;  
     padding-bottom: 0; 
-
   }
 
   .score-font{
@@ -126,8 +115,6 @@ body {
     margin:0 ;
   }
 
-
-  
   #player1score-container {
     border-radius: 15px 15px 0px 0px ;
     background-color: #5FA0F5; 
@@ -141,7 +128,6 @@ body {
     max-height:100%;
     width:100%; 
     margin: 0; 
-  
   }
 
   #playersturn-container {
@@ -151,11 +137,10 @@ body {
     text-align: center;
     height: 30px; 
   }
+
   #playersturn-sentence{
     font-size: 12px 
   }
-
-
 
   #control-container {
     width: 100%;
@@ -165,23 +150,21 @@ body {
     position: relative; 
     height: 7em; 
     padding-bottom: 0.5rem 
-    
-    
   }
+
   .instruction-text {
     font-size: 8px;
     font-family: 'Bruno Ace', cursive;
     position: relative; 
-   
   }
 
   .first-instruction { 
     grid-column: 2; 
-  position: relative; }
+  position: relative; 
+}
   
   
   #direction-btns-container {
-
     display: grid; 
     grid-template-columns: 1fr 1fr 1fr;
     grid-column: 2; 
@@ -189,9 +172,8 @@ body {
     grid-row: 2; 
     grid-gap: 0 0; 
     position: relative; 
-    
-      
 }
+
 #up {
     grid-column: 2; 
     grid-row: 1; 
