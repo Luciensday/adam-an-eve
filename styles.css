@@ -180,20 +180,22 @@ body {
     padding-bottom: 0; 
     font-family: 'Bruno Ace', cursive;
     text-align: center; 
-    
 }
+
 #left {
     grid-column: 1; 
     grid-row: 2; 
     font-family: 'Bruno Ace', cursive;
     text-align: center; 
 }
+
 #down {
     grid-column: 2; 
     grid-row: 2; 
     font-family: 'Bruno Ace', cursive;
     text-align: center; 
 }
+
 #right {
     grid-column: 3; 
     grid-row: 2; 
@@ -218,7 +220,6 @@ body {
   border: 0;
   background-image:linear-gradient(-180deg, #FF7E31, #E62C03);
   position: relative; 
-
 }
 
 .direction-btns.active {
@@ -301,7 +302,6 @@ body {
   .prompt-intro { font-size: 0.8rem; 
     line-height: 1.5
    }
-  
   
   @media screen and (max-width: 768px) {
     #game-container {
