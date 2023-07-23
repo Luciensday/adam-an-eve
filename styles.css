@@ -124,25 +124,17 @@ body {
     height:3rem; 
     border: 1px solid black;
     margin:0 ;
-    
   }
 
 
   
   #player1score-container {
-   
-   
     border-radius: 15px 15px 0px 0px ;
     background-color: #5FA0F5; 
-   
   }
   
   #player2score-container {
-    
-
-    
     background-color: #E84DB4; 
-   
   }
   
   #canvas {
@@ -157,10 +149,7 @@ body {
     width: 100%;
     align-items:center;
     text-align: center;
-  
     height: 30px; 
-    
-    
   }
   #playersturn-sentence{
     font-size: 12px 
