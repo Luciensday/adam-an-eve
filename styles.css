@@ -220,8 +220,6 @@ body {
 }
 
 .direction-btns {
-
-
   border-radius: 6px;
   box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
   color: #FFFFFF;
@@ -235,7 +233,6 @@ body {
   position: relative;
   user-select: none;
   vertical-align: top;
-  
   border: 0;
   background-image:linear-gradient(-180deg, #FF7E31, #E62C03);
   position: relative; 
@@ -260,7 +257,6 @@ body {
   grid-column: 4; 
   display: grid; 
   grid-template-columns: 1fr 1fr;
-
   }
   
   .dice-container {
@@ -313,7 +309,6 @@ body {
     transition: 0.2s all;
     grid-column: span 2; 
     font-family: 'Bruno Ace', cursive;
-
   }
   
   .btn-roll-dice:active {
@@ -329,7 +324,6 @@ body {
   @media screen and (max-width: 768px) {
     #game-container {
       width: 80vw;
-      
     }
   }
 
