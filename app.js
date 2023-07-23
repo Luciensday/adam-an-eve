@@ -507,9 +507,6 @@ playAgainButton.addEventListener("click", () => {
 
 checkGameEnd();
 
-
-  
-  
   const scoreElementPlayer1 = document.getElementById("player1score");
   const scoreElementPlayer2 = document.getElementById("player2score");
   if (currentPlayer === 1) {
